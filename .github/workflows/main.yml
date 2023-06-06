@@ -19,7 +19,7 @@ jobs:
         with:
           # Slack channel id, channel name, or user id to post message.
           # See also: https://api.slack.com/methods/chat.postMessage#channels
-          channel-id: 'C04R2RAR8TV'
+          channel-id: 'C03U708L0QM'
           # For posting a rich message using Block Kit
           slack-message: "Test Message"
         env:
