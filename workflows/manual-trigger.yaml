@@ -1,0 +1,16 @@
+name: 02 - Manual Trigger
+on:
+  workflow_dispatch: # Manually trigger the workflow
+    inputs:
+      message: # Parameter name
+        description: 'What do you want to say?'
+        required: true
+        default: 'Hi!'
+        type: string
+  push:
+
+jobs:
+  my-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "${{ github.event.inputs.message }}, you said."
