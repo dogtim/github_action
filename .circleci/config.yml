@@ -16,7 +16,7 @@ jobs:
       - checkout
       - run:
           name: "Say hello"
-          command: "echo Hello, World!"
+          command: echo "Git Branch: $GIT_BRANCH"
 
 # Orchestrate jobs using workflows
 # See: https://circleci.com/docs/configuration-reference/#workflows
@@ -24,3 +24,4 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
+      
