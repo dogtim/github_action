@@ -1,0 +1,35 @@
+name: Manual Trigger
+on:
+  workflow_dispatch: # Manually trigger the workflow
+    inputs:
+      message: # Parameter name
+        description: 'What do you want to say?'
+        required: true
+        default: 'Hi!'
+        type: string
+  push:
+
+jobs:
+    print-message:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Print message
+          run: echo "Hello, ready to deploy"
+          
+        - name: Set Git Branch as Environment Variable
+          id: git-branch
+          run: echo "::set-env name=GIT_BRANCH::$(git branch --show-current)"
+  # my-job:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Post to a Slack channel
+  #       id: slack
+  #       uses: slackapi/slack-github-action@v1.24.0
+  #       with:
+  #         # Slack channel id, channel name, or user id to post message.
+  #         # See also: https://api.slack.com/methods/chat.postMessage#channels
+  #         channel-id: 'C03U708L0QM'
+  #         # For posting a rich message using Block Kit
+  #         slack-message: "Test Message"
+  #       env:
+  #         SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}            
