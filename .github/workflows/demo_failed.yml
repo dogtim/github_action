@@ -12,12 +12,12 @@ jobs:
     print-message:
       runs-on: ubuntu-latest
       steps:
+        - uses: actions/setup-python@v4
         - name: Print message
           run: echo "Hello, ready to deploy"
           
-        - name: Set Git Branch as Environment Variable
-          id: git-branch
-          run: echo "::set-env name=GIT_BRANCH::$(git branch --show-current)"
+        - name: Excute a command in python
+          run: python script/divide.py -v
   # my-job:
   #   runs-on: ubuntu-latest
   #   steps:
