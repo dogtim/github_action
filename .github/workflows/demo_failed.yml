@@ -2,24 +2,27 @@ name: Demo Workflow failed
 on:
   workflow_dispatch: # Manually trigger the workflow
     inputs:
-      message: # Parameter name
-        description: 'What do you want to say?'
+      a:
+        description: 'Value A, please give a number'
         required: true
-        default: 'Hi!'
+        type: string
+      b:
+        description: 'Value B, please give a number'
+        required: true
         type: string
 
 jobs:
     print-message:
       runs-on: ubuntu-latest
       steps:
-        # To check out your repository's code. This step ensures that your workflow is running within your repository's directory.
-        - uses: actions/checkout@v3
-        - uses: actions/setup-python@v4
-        - name: Print message
-          run: echo "Hello, ready to deploy"
-          
-        - name: Excute a command in python
-          run: python script/divide.py -v
+        - name: Checkout code
+          uses: actions/checkout@v3
+        - name: Set up Python
+          uses: actions/setup-python@v4
+        - name: Execute Python script
+          run: python script/divide.py ${{ inputs.a }} ${{ inputs.b }}
+        - name: Run a one-line script
+          run: echo Hello, world!
   # my-job:
   #   runs-on: ubuntu-latest
   #   steps:
