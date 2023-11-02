@@ -1,6 +1,7 @@
 import subprocess
 
 def execute_git_command(command):
+    print(command)
     try:
         result = subprocess.run(
             command,
@@ -10,11 +11,15 @@ def execute_git_command(command):
             text=True,
             check=True,  # Raise a CalledProcessError for non-zero exit codes.
         )
-        return result.stdout
+        output = result.stdout
+        if "fatal:" in output.lower() or "Automatic merge failed" in output.lower():
+            print("Error encountered: " + output)
+            exit(1)
+        print(output)
     except subprocess.CalledProcessError as e:
         # Handle Git command error here
-        error_message = e.stderr
-        return error_message
+        print(str(e))
+        exit(1)
 
 def mergeDevIntoMaster():
     # Example Git commands
@@ -25,17 +30,8 @@ def mergeDevIntoMaster():
     ]
 
     for command in git_commands:
-        try:
-            output = execute_git_command(command)
-            print(output)
-            if "fatal:" in output.lower() or "merge conflict" in output.lower():
-                print("Error encountered.")
-                exit(1)
-        except subprocess.CalledProcessError as e:
-            # Handle Git command error here
-            print(f"Error executing command: {command}")
-            print(f"Error message: {e.stderr}")
-            exit(1)
+        output = execute_git_command(command)
+        print(output)
 
     print("Done")
 
