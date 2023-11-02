@@ -1,4 +1,4 @@
-name: Manual Trigger
+name: Demo Workflow failed
 on:
   workflow_dispatch: # Manually trigger the workflow
     inputs:
@@ -7,7 +7,6 @@ on:
         required: true
         default: 'Hi!'
         type: string
-  push:
 
 jobs:
     print-message:

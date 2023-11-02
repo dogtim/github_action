@@ -7,7 +7,6 @@ on:
         required: true
         default: 'Hi!'
         type: string
-  push:
 
 jobs:
     print-message:
