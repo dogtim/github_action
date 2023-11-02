@@ -12,6 +12,8 @@ jobs:
     print-message:
       runs-on: ubuntu-latest
       steps:
+        # To check out your repository's code. This step ensures that your workflow is running within your repository's directory.
+        - uses: actions/checkout@v3
         - uses: actions/setup-python@v4
         - name: Print message
           run: echo "Hello, ready to deploy"
