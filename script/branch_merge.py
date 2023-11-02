@@ -10,7 +10,6 @@ def execute(command: str, read_result: bool):
 def mergeDevIntoMaster():
     execute("git fetch -p", read_result=True)
     execute("git checkout -b main origin/main", read_result=True)
-    execute("git checkout -b main origin/main", read_result=True)
     execute("git pull origin dev --no-rebase --no-edit", read_result=True)
     print("Done")
 
