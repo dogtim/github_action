@@ -16,9 +16,8 @@ jobs:
           run: echo "Hello, ready to deploy"
         - name: Prepare versions
           id: prepare-versions
-          run:
-            git log >> $CURRENT_VERSION
-            echo "TEST=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          run: |
+            echo "1234" >> $GITHUB_OUTPUT
         - name: Test output
           id: prepare-versions1
           run:
