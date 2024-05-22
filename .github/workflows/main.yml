@@ -25,6 +25,8 @@ jobs:
             echo "123" >> $GITHUB_OUTPUT
             echo EOF >> $GITHUB_OUTPUT
             echo $GITHUB_OUTPUT
+        - name: Use outputs
+          run: echo "${{ steps.prepare-versions1.outputs.RELEASE_NOTES }}"
   # my-job:
   #   runs-on: ubuntu-latest
   #   steps:
