@@ -22,7 +22,7 @@ jobs:
           id: prepare-versions1
           run: |
             echo "RELEASE_NOTES<<EOF" >> $GITHUB_OUTPUT
-            echo "123" >> $GITHUB_OUTPUT
+            echo "123 55688888" >> $GITHUB_OUTPUT
             echo EOF >> $GITHUB_OUTPUT
             echo $GITHUB_OUTPUT
         - name: Use outputs
