@@ -14,10 +14,17 @@ jobs:
       steps:
         - name: Print message
           run: echo "Hello, ready to deploy"
-          
-        - name: Set Git Branch as Environment Variable
-          id: git-branch
-          run: echo "::set-env name=GIT_BRANCH::$(git branch --show-current)"
+        - name: Prepare versions
+          id: prepare-versions
+          run:
+            git log >> $CURRENT_VERSION
+            echo "CURRENT_VERSION=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+        - name: Test output
+          id: prepare-versions1
+          run:
+            echo "RELEASE_NOTES<<EOF" >> $GITHUB_OUTPUT
+            echo "123" >> $GITHUB_OUTPUT
+            echo EOF >> $GITHUB_OUTPUT
   # my-job:
   #   runs-on: ubuntu-latest
   #   steps:
