@@ -16,8 +16,8 @@ jobs:
           run: echo "Hello, ready to deploy"
         - name: Prepare versions
           id: prepare-versions
-          run: |
-            echo "1234" >> $GITHUB_OUTPUT
+          run:
+            echo "version=1234" >> $GITHUB_OUTPUT
         - name: Test output
           id: prepare-versions1
           run:
